@@ -3,6 +3,7 @@ class CreateHoods < ActiveRecord::Migration
     create_table :hoods do |t|
       t.string :name
       t.integer :city_id
+      t.string :latlng
       
       t.timestamps
     end

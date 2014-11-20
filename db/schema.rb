@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141119211606) do
   create_table "hoods", force: true do |t|
     t.string   "name"
     t.integer  "city_id"
+    t.string   "latlng"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
