@@ -40,4 +40,5 @@ gem 'spring',        group: :development
 
 gem 'figaro'
 
+gem 'foursquare2'
 
