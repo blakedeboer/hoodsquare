@@ -42,3 +42,5 @@ gem 'figaro'
 
 gem 'foursquare2'
 
+gem 'pry'
+

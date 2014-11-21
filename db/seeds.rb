@@ -14,13 +14,10 @@ nyc.hoods.create(:name => "Williamsburg") #2
 nyc.hoods.create(:name => "Financial District") #3
 nyc.hoods.create(:name => "Times Square") #4
 
-
 sf.hoods.create(:name => "The Mission") #5
 sf.hoods.create(:name => "Downtown") #6
 sf.hoods.create(:name => "Fisherman's Wharf") #7
 sf.hoods.create(:name => "North Beach") #8
-
-
 
 Tag.create(:tagger_id => 1, :taggee_id => 8)
 Tag.create(:tagger_id => 1, :taggee_id => 8)
