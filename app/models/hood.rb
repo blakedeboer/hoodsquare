@@ -82,6 +82,7 @@ class Hood < ActiveRecord::Base
     sf = City.find_by(:name => "San Francisco")
     hood_hsh["response"]["venues"].each do |venue|
       sf.hoods.create(:name => venue["name"], :latlng => "#{venue["location"]["lat"]}, #{venue["location"]["lng"]}")
+    end
   end
 end
 
