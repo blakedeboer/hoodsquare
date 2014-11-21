@@ -1,0 +1,6 @@
+<h1><%= @city.name %></h1>
+
+<ul><% @city.hoods.each do |hood| %>
+<li><%= link_to hood.name, city_hood_path(@city, hood.id) %></li>
+<% end %>
+<ul>
