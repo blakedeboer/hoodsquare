@@ -9,31 +9,38 @@
 nyc = City.create(:name => "New York City")
 sf = City.create(:name => "San Francisco")
 
-nyc.hoods.create(:name => "SoHo") #1
-nyc.hoods.create(:name => "Williamsburg") #2
-nyc.hoods.create(:name => "Financial District") #3
-nyc.hoods.create(:name => "Times Square") #4
+nyc.nychoods
+sf.sfhoods
 
-sf.hoods.create(:name => "The Mission") #5
-sf.hoods.create(:name => "Downtown") #6
-sf.hoods.create(:name => "Fisherman's Wharf") #7
-sf.hoods.create(:name => "North Beach") #8
+soho = Hood.find_by(:name => "SoHo")
+soho.create_hood_cats
 
-Tag.create(:tagger_id => 1, :taggee_id => 8)
-Tag.create(:tagger_id => 1, :taggee_id => 8)
-Tag.create(:tagger_id => 1, :taggee_id => 8)
-Tag.create(:tagger_id => 1, :taggee_id => 8)
+mission = Hood.find_by(:name => "The Mission District")
+mission.create_hood_cats
 
-Tag.create(:tagger_id => 1, :taggee_id => 5)
-Tag.create(:tagger_id => 1, :taggee_id => 5)
-Tag.create(:tagger_id => 1, :taggee_id => 5)
+# nyc.hoods.each do |hood|
+#   hood.create_hood_cats
+# end
 
-Tag.create(:tagger_id => 1, :taggee_id => 6)
+# sf.hoods.each do |hood|
+#   hood.create_hood_cats
+# end
+
+# Tag.create(:tagger_id => 1, :taggee_id => 8)
+# Tag.create(:tagger_id => 1, :taggee_id => 8)
+# Tag.create(:tagger_id => 1, :taggee_id => 8)
+# Tag.create(:tagger_id => 1, :taggee_id => 8)
+
+# Tag.create(:tagger_id => 1, :taggee_id => 5)
+# Tag.create(:tagger_id => 1, :taggee_id => 5)
+# Tag.create(:tagger_id => 1, :taggee_id => 5)
+
+# Tag.create(:tagger_id => 1, :taggee_id => 6)
 
 
-Tag.create(:tagger_id => 8, :taggee_id => 1)
-Tag.create(:tagger_id => 8, :taggee_id => 1)
-Tag.create(:tagger_id => 8, :taggee_id => 1)
+# Tag.create(:tagger_id => 8, :taggee_id => 1)
+# Tag.create(:tagger_id => 8, :taggee_id => 1)
+# Tag.create(:tagger_id => 8, :taggee_id => 1)
 
-Tag.create(:tagger_id => 8, :taggee_id => 2)
+# Tag.create(:tagger_id => 8, :taggee_id => 2)
 
