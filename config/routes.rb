@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :'hoods', only: [:show]
   end
 
+  resources :'sessions'
+
   root 'cities#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

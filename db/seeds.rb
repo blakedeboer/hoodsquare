@@ -12,8 +12,6 @@ sf = City.create(:name => "San Francisco")
 nyc.nychoods
 sf.sfhoods
 
-
-
 soho = Hood.find_by(:name => "SoHo")
 soho.create_hood_cats
 
