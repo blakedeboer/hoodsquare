@@ -1,0 +1,8 @@
+<h1>Cities#index</h1>
+<p>Find me in app/views/cities/index.html.erb</p>
+
+<ul>
+<% @cities.each do |city| %>
+<li><%= link_to city.name, city %></li>
+<% end %>
+</ul>

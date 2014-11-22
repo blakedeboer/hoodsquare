@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hood_id: 1
+  cat_id: 1
+  checkins: 1
+
+two:
+  hood_id: 1
+  cat_id: 1
+  checkins: 1
