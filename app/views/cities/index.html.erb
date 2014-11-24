@@ -1,18 +1,10 @@
 <h1>Welcome to Hood2Hood</h1>
     <h2> Travelling to a new city? Find out which hoods are most similar to your favorite spots where you live so you know where to hang out!</h2>
-    <h3> Our cities </h3>
+<h1> Our cities </h1>
     <ul>
     <% @cities.each do |city| %>
       <li><%= link_to city.name, city %></li>
     <% end %>
-<h1>Cities#index</h1>
-<p>Find me in app/views/cities/index.html.erb</p>
-
-<ul>
-<% @cities.each do |city| %>
-<li><%= link_to city.name, city %></li>
-<% end %>
-</ul>
 
 <%= form_tag @city do %>
   <%= label_tag 'FIND ME THE' %>
