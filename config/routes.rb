@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :'sessions'
+  resources :'tags'
 
   root 'cities#index'
 

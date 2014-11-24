@@ -26,4 +26,10 @@ class City < ActiveRecord::Base
     end
   end
 
+  def nickname
+    self.name.split(" ").collect do |word|
+      word[0].upcase
+    end.join("")
+  end
+
 end

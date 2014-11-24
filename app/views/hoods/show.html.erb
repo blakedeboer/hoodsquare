@@ -1,2 +1,49 @@
-<h1><%= @hood.name %></h1>
-<h2>From: <%= @city.name %></h2>
+<html>
+  <body>
+
+    <div id="wrapper">
+      <h1><%= @hood.name %>, <%= @city.nickname %></h1>
+      <h2> Breakdown of Chelsea </h2>
+      <!-- match1 -->
+      <div id="match">
+        <h3> <%=@match_mission.name%> </h3>
+        <%= form_for Tag.new do |f| %>
+          <%=f.hidden_field :tagger_id, :value => @hood.id %>
+          <%=f.hidden_field :taggee_id, :value => @match_mission.id %>
+          <%=f.submit "Disagree" %>
+          <%=f.submit "Agree" %>
+        <%end%>
+        <h5>Total Tags: <%= @match_mission.tags.count %></h5>
+      </div>
+      <div id="match">
+        <h3> <%=@match_soma.name%> </h3>
+        <%= form_for Tag.new do |f| %>
+          <%=f.hidden_field :tagger_id, :value => @hood.id %>
+          <%=f.hidden_field :taggee_id, :value => @match_soma.id %>
+          <%=f.submit "Disagree" %>
+          <%=f.submit "Agree" %>
+        <%end%>
+        <h5>Total Tags: <%= @match_soma.tags.count %></h5>
+      </div>
+      <div id="match">
+        <h3> <%=@match_castro.name%> </h3>
+        <%= form_for Tag.new do |f| %>
+          <%=f.hidden_field :tagger_id, :value => @hood.id %>
+          <%=f.hidden_field :taggee_id, :value => @match_castro.id %>
+          <%=f.submit "Disagree" %>
+          <%=f.submit "Agree" %>
+        <%end%>
+        <h5>Total Tags: <%= @match_castro.tags.count %></h5>
+      </div>
+      <div id="match">
+        <h3> Vote for another hood: </h3>
+        <%= form_for Tag.new do |f| %>
+          <%=f.hidden_field :tagger_id, :value => @hood.id %>
+          <%=f.collection_select(:taggee_id, @sf_hoods, :id, :name, :prompt => 'Select hood') %><br><br>
+          <%=f.submit "Vote for this hood" %>
+        <%end%>
+      </div>
+    </div>
+
+  </body>
+</html>
