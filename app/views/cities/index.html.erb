@@ -1,23 +1,16 @@
-<h1>Cities#index</h1>
-<p>Find me in app/views/cities/index.html.erb</p>
-
-<ul>
-<% @cities.each do |city| %>
-<li><%= link_to city.name, city %></li>
-<% end %>
-</ul>
-
-<!-- What's the SF, NoMa , of NYC? -->
-<!-- SF and NoMa are selected from drop down lists 
-NYC is from a city drop down list that does not include SF -->
-<!-- submit button -->
-
-<%= form_for(:session, url: sessions_path) do |f| %>
-  <%= f.label :city_id, "Where are you from?" %>
-  <%= f.collection_select(:city_id, @cities, :id, :name, :prompt => "select city") %>
-
-  <%#= f.grouped_collection_select(:hood, :id, @cities, :hoods, :name, :id, :name) %>
-  <%#= f.select :cities, option_groups_from_collection_for_select(@cities, :hoods, :name, :id, :name) %>
-  <%#= f.option_groups_from_collection_for_select(@cities, :hoods, :name, :id, :name) %>
-  <%#= f.submit %>
-<% end %>
+<html>
+  <body>
+    <h1>Welcome to Hood2Hood</h1>
+    <h2> Travelling to a new city? Find out which hoods are most similar to your favorite spots where you live so you know where to hang out!</h2>
+    <h3> Our cities </h3>
+    <ul>
+    <% @cities.each do |city| %>
+      <li><%= link_to city.name, city %></li>
+    <% end %>
+    </ul>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <%= f.label :city_id, "Where are you from?" %>
+      <%= f.collection_select(:city_id, @cities, :id, :name, :prompt => "select city") %>
+    <% end %>
+  </body>
+</html>
