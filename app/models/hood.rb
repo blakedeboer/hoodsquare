@@ -124,6 +124,10 @@ class Hood < ActiveRecord::Base
     end
   end
 
+  def nickname
+    "#{self.name.split(" ").join("_")}_#{self.city.nickname}"
+  end
+
 end #end of class
 
 

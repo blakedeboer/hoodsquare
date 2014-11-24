@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :'hoods'
   end
 
+  resources :'tags'
+
   root 'cities#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
