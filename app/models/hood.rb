@@ -83,7 +83,30 @@ class Hood < ActiveRecord::Base
     category_id
   end
 
-  #returns key-value pair of parent id and total checkins
+  #returns the category name given a category id
+  def cat_name(cat_id)
+    category_name = ""
+    all_categories["response"]["categories"].each do |cat|
+      if cat["id"] == cat_id
+        category_name = cat["name"]
+      elsif
+        cat["categories"].each do |subc|
+          if subc["id"] == cat_id
+            category_name = subc["name"]
+          elsif subc["categories"].count > 0
+            subc["categories"].each do |ssc|
+              if ssc["id"] == cat_id
+                category_name = ssc["name"]
+              end
+            end
+          end
+        end
+      end
+    end
+    category_name
+  end
+
+  #returns hash with one key-value pair of parent id and total checkins
   def venue_cat_checkins(venue_id)
     venue = self.class.foursquare.venue(venue_id)
     info = {}
@@ -92,7 +115,7 @@ class Hood < ActiveRecord::Base
     info
   end
 
-  #returns all venue ids for a neighbodhood given a radius(m) and limit
+  #returns an array of hashes(parent_id => checkins) given a radius(m) and limit(count)
   def hood_categories(radius, limit)
     results = self.class.foursquare.explore_venues(:ll => "#{self.latlng}", :radius => "#{radius}", :limit => "#{limit}")
     id_array = results["groups"][0]["items"].map {|v| v.venue.id}
@@ -101,7 +124,7 @@ class Hood < ActiveRecord::Base
     end
   end
 
-  # returns consolidated list of categories with total checkins across those 
+  # returns consolidated hash of {parent_category => total checkins}
   def hood_checkins
     cat_checkins = {}
     hood_cats = hood_categories(250, 100)
@@ -120,9 +143,62 @@ class Hood < ActiveRecord::Base
   #creates instances of Category in database for a specific hood
   def create_hood_cats
     hood_checkins.each do |cat, checkins|
-      self.categories.create(:cat_id => cat, :checkins => checkins)
+      name = self.cat_name(cat)
+      self.categories.create(:cat_id => cat, :cat_name => name, :checkins => checkins)
     end
   end
+
+  def cat_name_and_checkin
+    all_categories_array = self.categories.order(checkins: :desc).limit(10)
+    all_categories_array.each do |cat|
+      puts "cat name: #{cat.cat_name}"
+      puts "cat count: #{cat.checkins}"
+    end
+  end
+
+  def category_name_percentage_hash
+    total_checkins = 0.0
+    self.categories.find_each do |category|
+      total_checkins += category.checkins
+    end
+    cat_percentage_hash = {}
+    all_categories_array = self.categories.order(checkins: :desc)
+    all_categories_array.each do |category|
+      percentage = category.checkins / total_checkins
+      cat_percentage_hash[category.cat_name] = percentage
+    end
+    cat_percentage_hash
+  end
+
+  def category_id_percentage_hash
+    total_checkins = 0.0
+    self.categories.find_each do |category|
+      total_checkins += category.checkins
+    end
+    cat_percentage_hash = {}
+    all_categories_array = self.categories.order(checkins: :desc)
+    all_categories_array.each do |category|
+      percentage = category.checkins / total_checkins
+      cat_percentage_hash[category.cat_id] = percentage
+    end
+    cat_percentage_hash
+  end
+
+  def array_of_category_percents
+    hash_most_pop_categories = Category.most_popular_by_count(1)
+    array = hash_most_pop_categories.keys.map do |category_name|
+      if self.category_name_percentage_hash.keys.include?(category_name)
+        self.category_name_percentage_hash.select {|k, v| k == category_name}
+      else
+        {category_name => 0.0}
+      end
+    end
+    array.map do |category|
+      category.values.first
+    end
+  end
+
+
 
 end #end of class
 
