@@ -43,3 +43,7 @@ gem 'figaro'
 gem 'foursquare2'
 
 gem 'pry'
+
+gem 'k_means'
+
+

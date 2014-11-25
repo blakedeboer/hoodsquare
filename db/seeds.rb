@@ -18,6 +18,9 @@ sf.sfhoods
 # mission = Hood.find_by(:name => "The Mission District")
 # mission.create_hood_cats
 
+soma = Hood.find_by(:name => "SOMA")
+soma.create_hood_cats
+
 # nyc.hoods.each do |hood|
 #   hood.create_hood_cats
 # end
