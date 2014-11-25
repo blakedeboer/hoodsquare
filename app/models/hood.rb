@@ -140,13 +140,16 @@ class Hood < ActiveRecord::Base
     secret = photo['secret']
 
     link = "https://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}.jpg"
-    
-    self.update(:image_url => link)
   end
 
-  # def self.save_imgs
-
-  # end
+  def self.get_img_urls
+    self.all.each do |hood|
+      if hood.image_url == nil
+        photo = hood.get_flickr_img
+        hood.update(:image_url => photo)
+      end
+    end
+  end
 
 end #end of class
 
