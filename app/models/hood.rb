@@ -128,6 +128,26 @@ class Hood < ActiveRecord::Base
     "#{self.name.split(" ").join("_")}_#{self.city.nickname}"
   end
 
+  def get_flickr_img
+    url = "https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=" + ENV['flickr_id'] + "&text=" + self.city.name.downcase.gsub(' ','+') + '%2C+' + self.name.downcase.gsub(' ','+') + '&sort=relevance&tag_mode=all&safe_search=1&content_type=1&nojsoncallback=1'
+
+    json_results = open(url)
+    images = JSON.load(json_results)
+    photo = images['photos']['photo'][0]
+    farm_id = photo['farm']
+    server_id = photo['server']
+    id = photo['id']
+    secret = photo['secret']
+
+    link = "https://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}.jpg"
+    
+    self.update(:image_url => link)
+  end
+
+  # def self.save_imgs
+
+  # end
+
 end #end of class
 
 
