@@ -51,9 +51,10 @@
           <ul class="nav navbar-nav navbar-right">
           <li class="page-scroll"><a href="#slider">Slider</a></li>
           <li class="page-scroll"><a href="#icon-box">Icons</a></li>
+          <li class="page-scroll"><a href="#grid">Grid</a></li>
           <li class="page-scroll"><a href="#featured">Featured</a></li>
           <li class="page-scroll"><a href="#showcase">Showcase</a></li>
-          <li class="page-scroll"><a href="#grid">Grid</a></li>         
+                   
           <li class="page-scroll"><a href="#team">Team</a></li>
           <li class="page-scroll"><a href="#pricing">Pricing</a></li>
           <li class="page-scroll"><a href="#contact">Contact</a></li>
@@ -87,7 +88,7 @@
               <p>Travelling to a new city? Find out which hoods are most similar to your favorite spots where you live so you know where to hang out!
               </p>                
                 <div class="page-scroll">
-                <a href="#icon-box" class="btn btn-custom btn-lg">Get Started</a>  
+                <a href="#grid" class="btn btn-custom btn-lg">Get Started</a>  
                 </div>
             </div>            
           </div>
@@ -167,13 +168,14 @@
       
     </div>  
     <!-- ./Slider -->
-          
+
+
     <!-- Icon-box -->
     <div id="icon-box" class="fullSection">
       <div class="container">
       
         <div class="section-heading">
-          <h2>From where to where?</h2>
+          <h2>About Us and % system?</h2>
         </div>
         
         <div class="row">           
@@ -231,6 +233,29 @@
     </div>
     <!-- ./Icon-box -->
     
+    <!-- grid -->
+    <div id="grid" class="fullSection">
+      <div class="container">
+      
+        <div class="section-heading">
+          <h2>Find me the ...</h2>
+        </div>
+
+        <!-- /row -->
+
+        <div class="row">
+          <%= render 'cities/form' %>
+        </div>
+        <!-- /row -->
+        
+        
+        <!-- /row -->
+                  
+      </div>
+          
+    </div>
+    <!-- ./grid -->
+
     <!-- featured -->
     <div id="featured" class="fullSection">
       <div class="container">
@@ -323,7 +348,7 @@
           
     </div>
     <!-- ./featured -->
-    
+
     <!-- showcase -->
     <div id="showcase" class="fullSection">
       <div class="container">
@@ -384,59 +409,6 @@
           
     </div>
     <!-- ./showcase -->
-    
-    <!-- grid -->
-    <div id="grid" class="fullSection">
-      <div class="container">
-      
-        <div class="section-heading">
-          <h2>Grid</h2>
-        </div>
-        
-        <div class="row">
-          <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
-            <h3>1/4</h3>              
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim.  </p>
-          </div>
-          <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
-            <h3>1/4</h3>
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim.  </p>
-          </div>
-          <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
-            <h3>1/4</h3>              
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim.  </p>
-          </div>
-          <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
-            <h3>1/4</h3>
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim.  </p>
-          </div>
-        </div>
-        <!-- /row -->
-
-        <div class="row">
-          <div class="col-md-6 col-sm-6 wow fadeInUp showdelay2">
-            <h3>1/2</h3>              
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim elit hendrerit. Quisque tempus arcu vulputate metus convallis elementum.  </p>
-          </div>
-          <div class="col-md-6 col-sm-6 wow fadeInUp showdelay2">
-            <h3>1/2</h3>
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim elit hendrerit. Quisque tempus arcu vulputate metus convallis elementum.  </p>
-          </div>
-        </div>
-        <!-- /row -->
-        
-        <div class="row">
-          <div class="col-md-12 wow fadeInUp showdelay2">
-            <h3>Full</h3>
-            <p>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim elit hendrerit. Quisque tempus arcu vulputate metus convallis elementum. Aenean rhoncus rutrum quam ut semper. Fusce ut eros quis metus ullamcorper commodo ut sit amet nisi. Cras mattis enim eu urna tristique posuere. In vitae adipiscing nulla. Phasellus purus eros, aliquam ac urna eget, dictum consequat turpis. Aliquam hendrerit odio ut placerat pharetra. Etiam quis auctor sapien. Praesent sed consectetur lorem, et gravida purus. </p>
-          </div>
-        </div>
-        <!-- /row -->
-                  
-      </div>
-          
-    </div>
-    <!-- ./grid -->
 
     <!-- team -->
     <div id="team" class="fullSection">
