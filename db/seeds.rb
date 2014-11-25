@@ -12,11 +12,14 @@ sf = City.create(:name => "San Francisco")
 nyc.nychoods
 sf.sfhoods
 
-soho = Hood.find_by(:name => "SoHo")
-soho.create_hood_cats
+w_burg = Hood.find_by(:name => "Williamsburg")
+w_burg.create_hood_cats
+
+soma = Hood.find_by(:name => "SOMA")
+soma.create_hood_cats
 
 mission = Hood.find_by(:name => "The Mission District")
-mission.create_hood_cats
+soho = Hood.find_by(:name => "SoHo")
 
 # nyc.hoods.each do |hood|
 #   hood.create_hood_cats
@@ -26,14 +29,13 @@ mission.create_hood_cats
 #   hood.create_hood_cats
 # end
 
-# Tag.create(:tagger_id => 1, :taggee_id => 8)
-# Tag.create(:tagger_id => 1, :taggee_id => 8)
-# Tag.create(:tagger_id => 1, :taggee_id => 8)
-# Tag.create(:tagger_id => 1, :taggee_id => 8)
-
-
-
-# Tag.create(:tagger_id => 8, :taggee_id => 2)
-
+w_comparison = [Hood.find_by(:name => "The Mission District"), Hood.find_by(:name => "North Beach"), Hood.find_by(:name => "Haight-Ashbury")]
+soma_comparison = [Hood.find_by(:name => "SoHo"), Hood.find_by(:name => "Chelsea"), Hood.find_by(:name => "East Village")]
+mission_comparison = [Hood.find_by(:name => "Williamsburg"), Hood.find_by(:name => "East Village"), Hood.find_by(:name => "Park Slope")]
+soho_comparison = [Hood.find_by(:name => "SOMA"), Hood.find_by(:name => "Downtown San Francisco"), Hood.find_by(:name => "The Castro")]
+Tag.create_tags_from_comparison(w_burg, w_comparison)
+Tag.create_tags_from_comparison(soma, soma_comparison)
+Tag.create_tags_from_comparison(mission, mission_comparison)
+Tag.create_tags_from_comparison(soho, mission_comparison)
 
 

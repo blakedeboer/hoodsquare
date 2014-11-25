@@ -17,7 +17,7 @@
               <h3> <%=match.name%> </h3>
             </div>
             <div id="percent-match">
-              <h4><%= percentage %> of people voted for <%= match.name %></h4>
+              <h4><%= percentage %> of people said that <%= match.name %> is like <%= @hood.top_match.name %>.</h4>
             </div>
             <div id="match_image">
               <%= image_tag "http://#{match.nickname}.jpg.to/", height: '200px', width: '90%' %>

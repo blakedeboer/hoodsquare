@@ -155,7 +155,7 @@ class Hood < ActiveRecord::Base
     tag_hsh
   end
 
-  #converts tag_stats 4to hash that can be displayed on show page
+  #converts tag_stats to hash that can be displayed on show page
   def matches
     formatted_matches = {}
     tag_hsh = self.tag_stats.sort_by{|tag,count| -count}[0,3].to_h
