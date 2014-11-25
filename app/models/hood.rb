@@ -156,6 +156,7 @@ class Hood < ActiveRecord::Base
     end
   end
 
+  #returns hash of a hood's category names and percentage of total checkins {"category name" => 0.05} 
   def category_name_percentage_hash
     total_checkins = 0.0
     self.categories.find_each do |category|
@@ -170,6 +171,7 @@ class Hood < ActiveRecord::Base
     cat_percentage_hash
   end
 
+  #returns hash of a hood's category ids and percentage of total checkins {"category id" => 0.05} 
   def category_id_percentage_hash
     total_checkins = 0.0
     self.categories.find_each do |category|
@@ -184,8 +186,10 @@ class Hood < ActiveRecord::Base
     cat_percentage_hash
   end
 
+  #returns array of percentages for all most_popular categories [0.05, 0.09, 0.0, 0.7]
+  #if a hood does not have any checkins for that category, it is represented at 0.0 in the array
   def array_of_category_percents
-    hash_most_pop_categories = Category.most_popular_by_count(1)
+    hash_most_pop_categories = Category.most_popular_by_count(2)
     array = hash_most_pop_categories.keys.map do |category_name|
       if self.category_name_percentage_hash.keys.include?(category_name)
         self.category_name_percentage_hash.select {|k, v| k == category_name}

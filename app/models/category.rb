@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
   belongs_to :hood
 
+  #returns all cat_ids
   def self.all_cat_ids
     all_cat_ids = []
     self.all.find_each do |c|
@@ -11,6 +12,7 @@ class Category < ActiveRecord::Base
     all_cat_ids 
   end
 
+  #DO NOT USE. returns the top fifty categories, but doesn't group same cat_ids
   def self.top_fifty_cat_ids
     all_cat_ids = []
     self.all.order(checkins: :desc).limit(50).each do |c|
