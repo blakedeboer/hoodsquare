@@ -9,11 +9,9 @@
     <% end %>
   </ul>
 
-<%= form_tag @city do %>
-  <div class='from-location'>
+<%= form_tag search_index_path, :method => 'get' do %>
   <%= label_tag 'from_city_id', 'City' %>
   <%= collection_select(:city, :id, City.all, :id, :name,  {:prompt => 'Select city'}, :class => 'from-city') %>
-  </div>
   
   <%= label_tag 'hood_id', 'Hood' %>
   <%= collection_select(:hood, :city_id, Hood.all, :id, :name, {:prompt => 'Select the hood'}, :class => 'from-hood', :disabled => 'disabled') %>
@@ -22,7 +20,7 @@
   <%= label_tag 'to_city_id', 'to City' %>
   <%= collection_select(:city, :id, City.all, :id, :name, {:prompt => 'City'}, :class => 'to-city', :disabled => 'disabled') %>
 
-  <%= submit_tag %>
+  <%= submit_tag 'Search' %>
 <% end %>
 
 <!-- collection_select(:id, @cities, :id, :name) -->
