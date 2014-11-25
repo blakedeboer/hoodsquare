@@ -44,4 +44,4 @@ gem 'foursquare2'
 
 gem 'pry'
 
-gem 'jquery-ui-rails'
+# gem 'jquery-ui-rails'
