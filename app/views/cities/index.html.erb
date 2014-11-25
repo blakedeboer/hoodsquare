@@ -1,22 +1,28 @@
 <h1>Welcome to Hood2Hood</h1>
-    <h2> Travelling to a new city? Find out which hoods are most similar to your favorite spots where you live so you know where to hang out!</h2>
-<h1> Our cities </h1>
-    <ul>
+
+<h2> Travelling to a new city? Find out which hoods are most similar to your favorite spots where you live so you know where to hang out!</h2>
+
+<h1>Our cities</h1>
+  <ul>
     <% @cities.each do |city| %>
-      <li><%= link_to city.name, city %></li>
+    <li><%= link_to city.name, city %></li>
     <% end %>
+  </ul>
 
 <%= form_tag @city do %>
-  <%= label_tag 'FIND ME THE' %>
-  <br/>
+  <div class='from-location'>
+  <%= label_tag 'from_city_id', 'City' %>
   <%= collection_select(:city, :id, City.all, :id, :name,  {:prompt => 'Select city'}, :class => 'from-city') %>
-  <%= collection_select(:hood, :city_id, Hood.all, :id, :name, {:prompt => 'Select the hood'}, :class => 'from-hood') %>
-  <br/>
-  <%= label_tag 'IN' %>
-  <div class='to-city'>
-  <%= collection_select(:city, :id, City.all, :id, :name, {:prompt => 'City'}) %>
   </div>
-  <%= submit_tag 'Search' %>
+  
+  <%= label_tag 'hood_id', 'Hood' %>
+  <%= collection_select(:hood, :city_id, Hood.all, :id, :name, {:prompt => 'Select the hood'}, :class => 'from-hood', :disabled => 'disabled') %>
+  <br/>
+  
+  <%= label_tag 'to_city_id', 'to City' %>
+  <%= collection_select(:city, :id, City.all, :id, :name, {:prompt => 'City'}, :class => 'to-city', :disabled => 'disabled') %>
+
+  <%= submit_tag %>
 <% end %>
 
 <!-- collection_select(:id, @cities, :id, :name) -->

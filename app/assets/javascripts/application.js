@@ -12,5 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
-//= require bootstrap-sprockets
+//= require bootstrap
+//= require easing
+//= require jquery.backstretch.min
+//= require jquery.countdown
+//= require jquery.counterup
+//= require jquery.easing.1.3.js
+//= require jquery.magnific-popup
+//= require main
+//= require owl.carousel
+//= require waypoints
+//= require wow

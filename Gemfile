@@ -43,3 +43,5 @@ gem 'figaro'
 gem 'foursquare2'
 
 gem 'pry'
+
+gem 'jquery-ui-rails'
