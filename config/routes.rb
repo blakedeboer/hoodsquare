@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :'cities' do 
-    resources :'hoods', only: [:show]
+    resources :'hoods'
   end
 
-  resources :'sessions'
+  resources :'tags'
 
   root 'cities#index'
 

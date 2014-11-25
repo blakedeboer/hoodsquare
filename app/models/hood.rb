@@ -125,7 +125,7 @@ class Hood < ActiveRecord::Base
   end
 
   # returns consolidated hash of {parent_category => total checkins}
-  def hood_checkins
+  def hood_c heckins
     cat_checkins = {}
     hood_cats = hood_categories(250, 100)
     hood_cats.each do |cat_hsh|
@@ -186,6 +186,12 @@ class Hood < ActiveRecord::Base
     cat_percentage_hash
   end
 
+
+  def nickname
+    "#{self.name.split(" ").join("_")}_#{self.city.nickname}"
+  end
+
+
   #returns array of percentages for all most_popular categories [0.05, 0.09, 0.0, 0.7]
   #if a hood does not have any checkins for that category, it is represented at 0.0 in the array
   def array_of_category_percents
@@ -201,6 +207,7 @@ class Hood < ActiveRecord::Base
       category.values.first
     end
   end
+
 
 
 

@@ -1,0 +1,4 @@
+<% form_for(@city) do |f| %>
+  <%= f.select :hood, options_for_select(City.all.hoods) %>
+  <%= f.submit %>
+<% end %>
