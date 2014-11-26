@@ -24,4 +24,4 @@
 //= require owl.carousel
 //= require waypoints
 //= require wow
-//= require custom
+//= require search
