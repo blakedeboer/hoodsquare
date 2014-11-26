@@ -4,7 +4,9 @@ require 'json'
 class City < ActiveRecord::Base
   has_many :hoods
 
-  ALL_HOODS = ["The Mission District", "Fisherman's Wharf", "The Castro", "SOMA", "Downtown San Francisco", "Financial District", "Hayes Valley", "The Tenderloin", "Japantown", "Pacific Heights", "Civic Center District", "Chinatown", "Outer Sunset", "North Beach", "Haight-Ashbury", "City of Sausalito", "The Marina District", "Downtown Oakland", "Russian Hill", "The Inner Sunset", "Downtown Berkeley", "West Oakland", "Bernal Heights",  "Twin Peaks", "Chelsea", "Midtown Manhattan", "Flatiron District", "Theater District", "Hell's Kitchen", "SoHo", "West Village", "Greenwich Village", "Williamsburg", "Upper East Side", "Lower East Side", "East Village", "Upper West Side", "TriBeCa", "Harlem", "Chinatown", "Financial District", "Meatpacking District", "Park Slope", "Brooklyn Heights", "Fort Greene", "Murray Hill"]
+  ALL_HOODS = ["The Mission District", "Fisherman's Wharf", "The Castro", "SOMA", "Downtown San Francisco", "Financial District", "Hayes Valley", "The Tenderloin", "Japantown", "Civic Center District", "Chinatown", "North Beach", "Haight-Ashbury", "City of Sausalito", "The Marina District", "Downtown Oakland", "The Inner Sunset", "Downtown Berkeley", "Chelsea", "Midtown Manhattan", "Flatiron District", "Theater District", "Hell's Kitchen", "SoHo", "West Village", "Greenwich Village", "Williamsburg", "Upper East Side", "Lower East Side", "East Village", "Upper West Side", "TriBeCa", "Harlem", "Chinatown", "Financial District", "Meatpacking District", "Park Slope", "Brooklyn Heights", "Fort Greene", "Murray Hill"]
+
+  EXCLUDED_SF_HOODS = ["Twin Peaks", "Pacific Heights", "Outer Sunset", "Russian Hill", "West Oakland", "Bernal Heights"]
 
   # makes an api call with the foursquare api and parses it - can get the name of the hood and the latitude and longitudes and other info
   def nychoods

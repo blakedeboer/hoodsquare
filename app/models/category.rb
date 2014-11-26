@@ -25,7 +25,9 @@ class Category < ActiveRecord::Base
 
   #returns hash of most popular categories by count {category_name => count}
   def self.most_popular_by_count(min_count)
-    hash_categories_count = self.group(:cat_name).count.select {|name, count| count > min_count}
+    hash_categories_count = self.group(:cat_name).count
+    hash_categories_count.sort_by {|k, v| v}
+    hash_categories_count.select {|name, count| count > min_count}
   end
 
 

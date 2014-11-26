@@ -125,7 +125,7 @@ class Hood < ActiveRecord::Base
   end
 
   # returns consolidated hash of {parent_category => total checkins}
-  def hood_c heckins
+  def hood_checkins
     cat_checkins = {}
     hood_cats = hood_categories(250, 100)
     hood_cats.each do |cat_hsh|
@@ -195,7 +195,7 @@ class Hood < ActiveRecord::Base
   #returns array of percentages for all most_popular categories [0.05, 0.09, 0.0, 0.7]
   #if a hood does not have any checkins for that category, it is represented at 0.0 in the array
   def array_of_category_percents
-    hash_most_pop_categories = Category.most_popular_by_count(2)
+    hash_most_pop_categories = Category.most_popular_by_count(3)
     array = hash_most_pop_categories.keys.map do |category_name|
       if self.category_name_percentage_hash.keys.include?(category_name)
         self.category_name_percentage_hash.select {|k, v| k == category_name}
@@ -208,6 +208,50 @@ class Hood < ActiveRecord::Base
     end
   end
 
+  def self.sf_hood_category_count
+    Hood.where(:city_id => 2).each do |hood|
+      if hood.categories.count > 21
+        puts "#{hood.name}: #{hood.categories.count}"
+      end
+    end
+  end
+
+  def self.distance(current_hood_id, comparison_hood_id)
+    current_hood_array = self.find(current_hood_id).array_of_category_percents
+    comp_hood_array = self.find(comparison_hood_id).array_of_category_percents
+    data = [current_hood_array, comp_hood_array]
+    distances_array = [0, 0]
+    accurate = false
+    accurate_distance = 0
+
+    while !accurate
+      kmeans = KMeans.new(data, :centroids => 2)
+      if kmeans.view.last.count == 2
+        if kmeans.nodes.first.best_distance == kmeans.nodes.last.best_distance 
+          accurate_distance = kmeans.nodes.first.best_distance
+          accurate = true
+        elsif distances_array.include?(kmeans.nodes.first.best_distance) 
+          accurate_distance = kmeans.nodes.first.best_distance
+          accurate = true
+        elsif distances_array.include?(kmeans.nodes.last.best_distance)
+          accurate_distance = kmeans.nodes.last.best_distance
+          accurate = true
+        else
+          distances_array = [kmeans.nodes.first.best_distance, kmeans.nodes.last.best_distance]
+        end
+      end
+    end
+    accurate_distance
+  end 
+
+  def self.relative_distances(current_hood_id, city_id)
+    distances_hash = {}
+
+    Hood.where(:city_id => city_id).each do |hood|
+      distances_hash[hood.name] = [self.distance(current_hood_id, hood.id)]
+    end
+    distances_hash.sort_by {|k, v| v}
+  end
 
 
 
