@@ -294,26 +294,11 @@ class Hood < ActiveRecord::Base
       distances_hash[hood.name] = [self.distance(current_hood_id, hood.id)]
     end
     distances_hash.sort_by {|k, v| v}
+  end
 
   def get_flickr_img
-    lat = self.latlng.split(',').first.strip.to_f.round(1)
-    lng = self.latlng.split(',').last.strip.to_f.round(1)
-    #find place id with lat and long
-    location = "https://api.flickr.com/services/rest/?method=flickr.places.findByLatLon&api_key=3343b0e670d14fb911f614f42f021a7b&lat=#{lat}&lon=#{lng}&license=creativecommons&format=json&nojsoncallback=1"
-    # 
-    # &geo_context=2
-
-    # json_results = open(location)
-    # images = JSON.load(json_results)
-    # place_id = images['places']['place'][0]['place_id']
-    # # binding.pry
-
-    # url = "https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=" + ENV['flickr_id'] + "&text=" + self.city.name.downcase.gsub(' ','+') + '%2C+' + self.name.downcase.gsub(' ','+') + '&sort=relevance&tag_mode=all&safe_search=1&content_type=1&place_id=' + place_id + '&nojsoncallback=1'
-
-    # withouot place_id
     url = "https://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=" + ENV['flickr_id'] + "&text=" + self.name.downcase.gsub(' ','+') + '%2C+' + self.city.name.downcase.gsub(' ','+') +  "&tag_mode=all&text=" + self.name.downcase.gsub(' ','+') + '%2C+' + self.city.name.downcase.gsub(' ','+') + '&sort=relevance&license=1%2C+2%2C+3%2C+4&safe_search=1&content_type=1' + '&nojsoncallback=1'
 
-    #1%2C+2%2C+3%2C+4
     json_results = open(url)
     images = JSON.load(json_results)
     photo = images['photos']['photo'][0]
@@ -323,7 +308,6 @@ class Hood < ActiveRecord::Base
     secret = photo['secret']
 
     link = "https://farm#{farm_id}.staticflickr.com/#{server_id}/#{id}_#{secret}.jpg"
-    # binding.pry
   end
 
   def self.get_img_urls
