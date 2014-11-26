@@ -191,7 +191,6 @@ class Hood < ActiveRecord::Base
     "#{self.name.split(" ").join("_")}_#{self.city.nickname}"
   end
 
-<<<<<<< HEAD
   #compiles hash showing hood_id of match and percentage of total tags
   def tag_stats
     tag_hsh = {}
@@ -295,7 +294,7 @@ class Hood < ActiveRecord::Base
       distances_hash[hood.name] = [self.distance(current_hood_id, hood.id)]
     end
     distances_hash.sort_by {|k, v| v}
-=======
+
   def get_flickr_img
     lat = self.latlng.split(',').first.strip.to_f.round(1)
     lng = self.latlng.split(',').last.strip.to_f.round(1)
@@ -334,7 +333,6 @@ class Hood < ActiveRecord::Base
         hood.update(:img_url => photo)
       # end
     end
->>>>>>> layout
   end
 
 end #end of class
