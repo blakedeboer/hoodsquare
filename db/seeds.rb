@@ -12,6 +12,7 @@ sf = City.create(:name => "San Francisco")
 nyc.nychoods
 sf.sfhoods
 
+<<<<<<< HEAD
 w_burg = Hood.find_by(:name => "Williamsburg")
 w_burg.create_hood_cats
 
@@ -20,6 +21,16 @@ soma.create_hood_cats
 
 mission = Hood.find_by(:name => "The Mission District")
 soho = Hood.find_by(:name => "SoHo")
+=======
+# soho = Hood.find_by(:name => "SoHo")
+# soho.create_hood_cats
+
+# mission = Hood.find_by(:name => "The Mission District")
+# mission.create_hood_cats
+
+soma = Hood.find_by(:name => "SOMA")
+soma.create_hood_cats
+>>>>>>> b4315804aee52e47e80381dd125f2ea30017d8e8
 
 # nyc.hoods.each do |hood|
 #   hood.create_hood_cats
