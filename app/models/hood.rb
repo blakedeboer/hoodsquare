@@ -287,7 +287,8 @@ class Hood < ActiveRecord::Base
     accurate_distance
   end 
 
-  def self.relative_distances(current_hood_id, city_id)
+  #given a hood_id, and the other city's id, returns a hash of the other city's hood names and their "distance" to the current city
+  def self.relative_distances_by_name(current_hood_id, city_id)
     distances_hash = {}
 
     Hood.where(:city_id => city_id).each do |hood|
@@ -317,6 +318,15 @@ class Hood < ActiveRecord::Base
         hood.update(:img_url => photo)
       # end
     end
+  end
+    #given a hood_id, and the other city's id, returns a hash of the other city's hood names and their "distance" to the current city
+  def self.relative_distances_by_id(current_hood_id, city_id)
+    distances_hash = {}
+
+    Hood.where(:city_id => city_id).each do |hood|
+      distances_hash[hood.id] = [self.distance(current_hood_id, hood.id)]
+    end
+    distances_hash.sort_by {|k, v| v}
   end
 
 end #end of class
