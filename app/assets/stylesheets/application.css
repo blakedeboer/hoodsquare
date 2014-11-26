@@ -13,7 +13,11 @@
  *= require_self
  *= require_tree .
  *= require bootstrap
+ *= require animate
+ *= require font-awesome
+ *= require magnific-popup
+ *= require owl.carousel
+ *= require owl.theme
+ *= require owl.transitions
+ *= require style
  */
-
- @import "bootstrap-sprockets";
- @import "bootstrap";

@@ -46,4 +46,4 @@ gem 'pry'
 
 gem 'k_means'
 
-
+# gem 'jquery-ui-rails'

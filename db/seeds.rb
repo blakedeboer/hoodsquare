@@ -18,8 +18,11 @@ w_burg.create_hood_cats
 soma = Hood.find_by(:name => "SOMA")
 soma.create_hood_cats
 
-mission = Hood.find_by(:name => "The Mission District")
 soho = Hood.find_by(:name => "SoHo")
+soho.create_hood_cats
+
+Hood.all.get_img_urls
+
 
 # soho = Hood.find_by(:name => "SoHo")
 # soho.create_hood_cats
