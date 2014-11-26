@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141125161904) do
 
-
   create_table "categories", force: true do |t|
     t.integer  "hood_id"
     t.string   "cat_id"
