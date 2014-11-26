@@ -4,27 +4,30 @@
     <br><br>
     <div id="wrapper">
       <div id="hood_title">
-        <h1><%= @hood.name %>, <%= @city.nickname %></h1>
+        <h2> You searched for the <%=@hood.name%> of <%=@hood.top_match.city.name%></h2>
+        <h4> The top match is: </h4>
+        <h1> <%= @hood.top_match.name %>, <%= @hood.top_match.city.nickname %></h1>
       </div>
       <!-- match1 -->
       <div id="match-wrapper">
-        <% @matches.each do |match| %>
+        <h3> Compare <%=@hood.top_match.name %> to hoods in <%=@hood.city.name%></h3>
+        <% @hood.top_match.matches.each do |match, percentage| %>
           <div id="match">
             <div id="match_name">
               <h3> <%=match.name%> </h3>
+            </div>
+            <div id="percent-match">
+              <h4><%= percentage %> of people said that <%= match.name %> is like <%= @hood.top_match.name %>.</h4>
             </div>
             <div id="match_image">
               <%= image_tag "http://#{match.nickname}.jpg.to/", height: '200px', width: '90%' %>
             </div>
             <div id="match-form">
             <%= form_for Tag.new do |f| %>
-              <%=f.hidden_field :tagger_id, :value => @hood.id %>
+              <%=f.hidden_field :tagger_id, :value => @hood.top_match.id %>
               <%=f.hidden_field :taggee_id, :value => match.id %>
               <%=f.submit "", :id=>"Agree"%>
             <%end%>
-            </div>
-            <div id="percent-match">
-              <h5>Total Tags: <%= match.tags.count %></h5>
             </div>
           </div>
         <% end %>
@@ -41,8 +44,8 @@
           <div id="match-form">
             <br>
             <%= form_for Tag.new do |f| %>
-              <%=f.hidden_field :tagger_id, :value => @hood.id %>
-              <%=f.collection_select(:taggee_id, @sf_hoods, :id, :name, :prompt => 'Select hood') %><br><br>
+              <%=f.hidden_field :tagger_id, :value => @hood.top_match.id %>
+              <%=f.collection_select(:taggee_id, @city.hoods, :id, :name, :prompt => 'Select hood') %><br><br>
               <%=f.submit "Vote for this hood" %>
             <%end%>
             <br>
@@ -50,9 +53,9 @@
         </div>
       </div>
       <div id="other_hoods">
-        <h3>Checkout other hoods in <%= @city.nickname %>:</h3>
-        <% @city.hoods.each do |hood| %>
-            <h5><% if @hood != hood %><%= link_to hood.name, city_hood_path(@city, hood), :id => "other_hood_name"%><% end %></h5>
+        <h3>Checkout other hoods in <%= @hood.top_match.city.nickname %>:</h3>
+        <% @hood.top_match.city.hoods.each do |hood| %>
+            <h5><% if @hood.top_match != hood %><%= link_to hood.name, city_hood_path(@hood.top_match.city, hood), :id => "other_hood_name"%><% end %></h5>
         <% end %>
       </div>
     </div>

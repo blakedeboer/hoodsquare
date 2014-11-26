@@ -148,6 +148,7 @@ class Hood < ActiveRecord::Base
     end
   end
 
+  #creates a formatted name good for google image search
   def cat_name_and_checkin
     all_categories_array = self.categories.order(checkins: :desc).limit(10)
     all_categories_array.each do |cat|
@@ -186,11 +187,53 @@ class Hood < ActiveRecord::Base
     cat_percentage_hash
   end
 
-
   def nickname
     "#{self.name.split(" ").join("_")}_#{self.city.nickname}"
   end
 
+  #compiles hash showing hood_id of match and percentage of total tags
+  def tag_stats
+    tag_hsh = {}
+    total_tags = Tag.where("tagger_id" => self.id) + Tag.where("taggee_id" => self.id)
+    tag_count = total_tags.count
+    total_tags.each do |tag|
+      if tag.tagger_id == self.id
+        if tag_hsh[tag.taggee_id] == nil
+          tag_hsh[tag.taggee_id] = 1
+        else
+          tag_hsh[tag.taggee_id] += 1
+        end
+      else
+        if tag_hsh[tag.tagger_id] == nil
+          tag_hsh[tag.tagger_id] = 1
+        else
+          tag_hsh[tag.tagger_id] += 1
+        end
+      end
+    end
+    tag_hsh.each do |tag, count|
+      tag_hsh[tag] = (((count.to_f)/tag_count)*100).to_i
+    end
+    tag_hsh
+  end
+
+  #converts tag_stats to hash that can be displayed on show page
+  def matches
+    formatted_matches = {}
+    tag_hsh = self.tag_stats.sort_by{|tag,count| -count}[0,3].to_h
+    tag_hsh.each do |tag, count|
+      hood = Hood.find(tag)
+      percentage = count.to_s.concat("%")
+      formatted_matches[hood] = percentage
+    end 
+    formatted_matches
+  end
+
+  #returns top match based on tags in the system
+  def top_match
+    tag_hsh = self.tag_stats.sort_by{|tag,count| -count}[0,3].to_h
+    Hood.find(tag_hsh.keys.first)
+  end
 
   #returns array of percentages for all most_popular categories [0.05, 0.09, 0.0, 0.7]
   #if a hood does not have any checkins for that category, it is represented at 0.0 in the array
@@ -252,8 +295,6 @@ class Hood < ActiveRecord::Base
     end
     distances_hash.sort_by {|k, v| v}
   end
-
-
 
 end #end of class
 
