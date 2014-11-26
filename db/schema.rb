@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141125161904) do
     t.string   "latlng"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url"
+    t.string   "img_url"
   end
 
   create_table "tags", force: true do |t|
