@@ -1,7 +1,24 @@
-$('#showcase').show();
-$('#featured').show();
-$('#icon-box').show();
-$('.nav').find('a[href$="featured"]').show();
-$('.nav').find('a[href$="showcase"]').show();
-$('.nav').find('a[href$="icon-box"]').show();
 
+$('#icon-box').show();
+$('#featured').show();
+
+$('.nav').find('a[href$="icon-box"]').show();
+$('.nav').find('a[href$="featured"]').show();
+
+$('#icon-box .container').empty();
+$('#icon-box .container').append("<%= j render 'search/topmatch' %>");
+
+
+$('#featured .container').empty();
+
+$('#featured .container').append("<%= j render 'search/matches' %>");
+$('#featured-list').show();
+
+// removes match1, match2, match3 from other vote hoods
+var match1 = $('.featured-title h3:eq(0)').text();
+var match2 = $('.featured-title h3:eq(1)').text();
+var match3 = $('.featured-title h3:eq(2)').text();
+
+$('#featured .btn-selection option:contains(' + match1 + ')').remove();
+$('#featured .btn-selection option:contains(' + match2 + ')').remove();
+$('#featured .btn-selection option:contains(' + match3 + ')').remove();

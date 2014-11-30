@@ -1,0 +1,44 @@
+<%= form_tag search_index_path, :method => 'get', :role => 'form', remote: true do %>
+
+<div class='row'>
+  <div class="col-md-6 col-sm-6 wow fadeInUp showdelay2">  
+  <h3>city :</h3>        
+    <div class="form-group">
+        <%= collection_select(:city, :id, City.all, :id, :name,  {:prompt => 'Select city'}, :class => 'from-city form-control') %>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 wow fadeInUp showdelay2">
+    <h3>with this hood :</h3>
+    <div class="form-group">
+      <%= collection_select(:hood, :id, Hood.all, :id, :name, {:prompt => 'Select the hood'}, :class => 'from-hood form-control', :disabled => 'disabled') %>
+    </div>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
+  </div>
+  <div class="col-md-6 col-sm-6 wow fadeInUp showdelay2"> 
+    <h3>of city :</h3>         
+    <div class="form-group">
+      <%= collection_select(:city2, :id, City.all, :id, :name, {:prompt => 'City'}, :class => 'to-city form-control', :disabled => 'disabled') %>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
+  </div>
+  <div class="col-md-9 col-sm-9 wow fadeInUp showdelay2"> 
+    <div class="form-group">
+      <%= submit_tag 'Search', :class => 'btn btn-custom btn-lg page-scroll' %>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
+  </div>
+</div>
+
+<% end %>

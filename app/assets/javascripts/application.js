@@ -25,3 +25,4 @@
 //= require waypoints
 //= require wow
 //= require search
+//= require tags

@@ -1,0 +1,12 @@
+<div class="section-heading">
+  <h2>The top match for <%= @from_hood.city.name%>, <%= @from_hood.name %> in <%= @from_hood.top_match.city.name %> is :</h2>
+</div> 
+
+<div class="text-center wow fadeInLeft showdelay2">
+  <img class="img-responsive img-thumbnail" src="<%= @from_hood.top_match.img_url %>" alt="">
+  <h3><%= @from_hood.top_match.name %>, <%= @from_hood.top_match.city.nickname %></h3>
+  <p>See what others are saying about the <%=@from_hood.top_match.name %> with hoods in <%= @from_hood.city.name%></p>
+  <div class='page-scroll'>
+    <a href="#featured" class="btn btn-custom btn-lg">What people are saying?</a>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="section-heading">
+  <h2>What people are saying?</h2>
+  <p>The following hoods are what people say that <%=@from_hood.top_match.name %> feel like in <%= @from_hood.city.name%></p>
+</div>
+
+<div class='row'>
+<!-- featured-list -->  
+  <div id="featured-list" class="owl-carousel  wow fadeInUp showdelay2">  
+    <% @from_hood.top_match.matches.each do |match, percentage| %>
+      <div class="col-md-3 col-sm-6">
+        <div class="featured-box item text-center">
+          <img class="img-responsive img-thumbnail" src="<%= match.img_url %>" alt="">
+          <div class="featured-info">
+            <div class='featured-title'>
+              <h3><%= match.name %></h3>
+            </div>
+          </div>
+          <div class='featured-info featured-caption'>
+            <b><%= percentage %></b> of people said that <%= match.name %> is like <%= @from_hood.top_match.name %>.        
+          </div>
+          <div class="icon-box text-center wow fadeInUp showdelay2 agree-form">
+              <%= form_for Tag.new, :role => 'form' do |f| %>
+              <div class="form-group">
+              <%= f.hidden_field :tagger_id, :value => @from_hood.top_match.id, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.hidden_field :taggee_id, :value => match.id, :class => 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.button :type => 'submit',:class => 'btn btn-custom form-control btn-lg' do %>
+                Agree <i class='fa fa-thumbs-up'></i>
+                <% end %>
+              </div>
+              <% end %>
+          </div> 
+        </div>
+      </div>
+    <% end %>      
+  </div>
+
+  <div class="col-md-3 col-sm-6">
+    <div class="featured-box item text-center">
+    <img class="img-responsive img-thumbnail" src="<%= @from_hood.top_match.img_url %>" alt="">
+    <div class="featured-info">
+      <div class='featured-title'>
+        <h3>Other</h3>
+      </div>
+    </div>
+    <div class='featured-info'>
+      If you disagree, cast your vote here!!!
+    </div>
+    <div class='featured-info vote-form'>
+    <%= form_for Tag.new, :role => 'form' do |f| %>
+      <div class='form-group'>
+      <%= f.hidden_field :tagger_id, :value => @from_hood.top_match.id, :class => 'form-control' %>
+      <%= f.collection_select(:taggee_id, @to_city.hoods, :id, :name, {:prompt => 'Select hood'}, :class => 'form-control btn-selection') %>
+      </div>
+      <div class='form-group'>
+      <%= f.submit "Vote", :class => 'btn btn-custom form-control btn-submit' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  </div>
+<!-- ./featured-list -->
+</div>
+
+<!-- featured-modal -->         
+<div class="modal fade" id="featured-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h2 class="modal-title" id="myModalLabel3">Your Vote</h2>
+    </div>
+    <div class="modal-body">
+      <h3 class="text-center">Center image with details</h3>
+      <p><img class="img-responsive img-full" src="images/img1.jpg" alt=""/>about section Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ullamcorper diam nec augue semper, in dignissim elit hendrerit. Quisque tempus arcu vulputate metus convallis elementum. Aenean rhoncus rutrum quam ut semper. Fusce ut eros quis metus ullamcorper commodo ut sit amet nisi. Cras mattis enim eu urna tristique posuere. In vitae adipiscing nulla. Phasellus purus eros, aliquam ac urna eget, dictum consequat turpis. Aliquam hendrerit odio ut placerat pharetra.</p>
+      <hr>                                      
+   </div>
+  </div>
+  </div>
+</div>
+<!-- ./featured-modal -->
+        
+</div>
+  
+</div>
+<!-- ./featured -->  
