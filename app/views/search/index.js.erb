@@ -6,10 +6,21 @@ $('.nav').find('a[href$="featured"]').show();
 
 $('#icon-box .container').empty();
 $('#icon-box .container').append("<%= j render 'search/topmatch' %>");
+$('#icon-box .container').show();
 
 $('#featured .container').empty();
 $('#featured .container').append("<%= j render 'search/matches' %>");
 $('#featured-list').show();
+
+
+$('.page-scroll a').bind('click', function(event) {
+  var $anchor = $(this);
+  $('html, body').stop().animate({
+    scrollTop: $($anchor.attr('href')).offset().top
+  }, 1500, 'easeInOutExpo');
+  event.preventDefault();
+});
+
 
 // removes match1, match2, match3 from other vote hoods
 var match1 = $('.featured-title h3:eq(0)').text();

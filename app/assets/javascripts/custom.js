@@ -5,3 +5,6 @@ $(function(){
    'images/bg-3.jpg'
   ], {duration: 5000, fade: 1000});
 });
+
+
+  
