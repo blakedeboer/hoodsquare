@@ -1,9 +1,21 @@
+.navbar-header a{
+  font-family: 'Bad Script';
+  font-weight: 900;
+  margin-top: 20px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-size: 28px;
+}
+
 input.btn.btn-submit,
 input.btn.btn-submit:focus {
     outline: none;
     border: 2px solid #fff;
     height: 46px;
     font-weight: bold;
+}
+
+#fullscreen-slider label{
+  font-size: 22px;
 }
 
 #fullscreen-slider .slider-caption i{
