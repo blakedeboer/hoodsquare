@@ -1,30 +1,37 @@
 <%= form_tag search_index_path, :method => 'get', :role => 'form', remote: true do %>
 
   <div class='row'>
-  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">  
-  <h3>city :</h3>        
-      <div class="form-group">
-        <%= collection_select(:city, :id, City.all, :id, :name,  {:prompt => 'Select city'}, :class => 'btn btn-custom from-city form-control') %>
-      </div>
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">  <div class='form-group'>
+      <%= label_tag 'city :' %>        
+    </div>
+    <div class="form-group">
+      <%= collection_select(:city, :id, City.all, :id, :name,  {:prompt => 'Select city'}, :class => 'btn btn-custom from-city form-control') %>
+    </div>
   </div>
 
   <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2">
-    <h3>with this hood :</h3>
-      <div class="form-group">
-        <%= collection_select(:hood, :id, Hood.all, :id, :name, {:prompt => 'Select the hood'}, :class => 'from-hood form-control', :disabled => 'disabled') %>
-      </div>
-  </div>
-
-  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2"> 
-    <h3>in this city :</h3>         
-      <div class="form-group">
-        <%= collection_select(:city2, :id, City.all, :id, :name, {:prompt => 'City'}, :class => 'to-city form-control', :disabled => 'disabled') %>
-      </div>
-  </div>
-
-  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2"> 
+    <div class='form-group'>
+      <%= label_tag 'with this hood :' %> 
+    </div>
     <div class="form-group">
-      <h3>Search</h3>
+      <%= collection_select(:hood, :id, Hood.all, :id, :name, {:prompt => 'Select the hood'}, :class => 'from-hood form-control', :disabled => 'disabled') %>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2"> 
+    <div class='form-group'>
+      <%= label_tag 'in this city :' %> 
+    </div>        
+    <div class="form-group">
+      <%= collection_select(:city2, :id, City.all, :id, :name, {:prompt => 'City'}, :class => 'to-city form-control', :disabled => 'disabled') %>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-3 wow fadeInUp showdelay2"> 
+    <div class='form-group'>
+      <%= label_tag 'Search :' %> 
+    </div>
+    <div class="form-group">
       <%= submit_tag 'Search', :class => 'btn btn-custom form-control btn-submit' %>
     </div>
   </div>
