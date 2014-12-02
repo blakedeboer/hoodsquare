@@ -8,4 +8,5 @@ $(function(){
   $('.nav').find('a[href$="icon-box"]').hide();
   $('.nav').find('a[href$="grid"]').hide();
   $('.nav').find('a[href$="contact"]').hide();
+
 });

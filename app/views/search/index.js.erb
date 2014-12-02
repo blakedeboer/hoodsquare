@@ -4,6 +4,15 @@ $('#featured').show();
 $('.nav').find('a[href$="icon-box"]').show();
 $('.nav').find('a[href$="featured"]').show();
 
+//this works only after a new search is submitted without page reload is clicked and then loaded
+  // $('.page-scroll input[type="submit"]').on('click', function(event) {
+  //   var $anchor = $(this);
+  //   $('html, body').stop().animate({
+  //     scrollTop: $('#icon-box').offset().top
+  //   }, 1500, 'easeInOutExpo');
+  //   event.preventDefault();
+  // });
+
 $('#icon-box .container').empty();
 $('#icon-box .container').append("<%= j render 'search/topmatch' %>");
 $('#icon-box .container').show();
@@ -30,3 +39,47 @@ var match3 = $('.featured-title h3:eq(2)').text();
 $('#featured .btn-selection option:contains(' + match1 + ')').remove();
 $('#featured .btn-selection option:contains(' + match2 + ')').remove();
 $('#featured .btn-selection option:contains(' + match3 + ')').remove();
+
+
+$('#featured-list .agree-form').on('submit', function(e){
+  e.preventDefault();
+  cityId = $('.from-city').val()
+   $.ajax('/cities/' + cityId + '/hoods', {
+      type: 'get',
+      context: this,
+      dataType: 'json'
+    }).success(function(result){
+      var chosenId = parseInt($(this).find('.form-group:eq(1)').children().attr('value'),10);
+
+      result.forEach(function(hood){
+        if (chosenId === hood.id){
+          $('#featured .modal-body img').attr('src', hood.img_url)
+          $('#featured .modal-body .hood-name').html(hood.name)
+        }
+      });
+    });  
+});
+
+$('.vote-form').on('submit', function(e){
+  e.preventDefault();
+  cityId = $('.from-city').val()
+   $.ajax('/cities/' + cityId + '/hoods', {
+      type: 'get',
+      context: this,
+      dataType: 'json'
+    }).success(function(result){
+
+      var chosenId = parseInt($(this).find('.form-group:eq(0) select').val(),10);
+      console.log(chosenId)
+      result.forEach(function(hood){
+        if (chosenId === hood.id){
+          $('#featured .modal-body img').attr('src', hood.img_url)
+          $('#featured .modal-body .hood-name').html(hood.name)
+        }
+      });
+    });  
+});
+
+$('.modal-header').on('click', function(e){
+  window.location.href = '/cities';
+});
