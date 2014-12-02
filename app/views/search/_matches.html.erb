@@ -53,10 +53,10 @@
     <%= form_for Tag.new, :role => 'form' do |f| %>
       <div class='form-group'>
       <%= f.hidden_field :tagger_id, :value => @from_hood.top_match.id, :class => 'form-control' %>
-      <%= f.collection_select(:taggee_id, @to_city.hoods, :id, :name, {:prompt => 'Select hood'}, :class => 'form-control btn-selection') %>
+      <%= f.collection_select(:taggee_id, @from_city.hoods, :id, :name, {:prompt => 'Select hood'}, :class => 'form-control btn-selection') %>
       </div>
       <div class='form-group'>
-      <%= f.submit "Vote", :class => 'btn btn-custom form-control btn-submit' %>
+      <%= f.submit "Vote", :class => 'btn btn-custom form-control btn-submit', :'data-toggle' => 'modal', :'data-target' => '#featured-modal' %>
       </div>
     <% end %>
     </div>
@@ -75,7 +75,7 @@
     </div>
     <div class="modal-body">
       <h3 class="text-center">Thanks for your Vote !</h3>
-      <p><img class="img-responsive img-full" src="images/img1.jpg" alt=""/>You chose HOOD NAME from <%= @from_city.name %> as the hood that most resembles <%= @from_hood.top_match.name %>, <%= @to_city.name %></p>
+      <p><img class="img-responsive img-full" src="images/img1.jpg" alt=""/>You chose <span class='hood-name'>HOOD NAME</span> from <%= @from_city.name %> as the hood that most resembles <span><%= @from_hood.top_match.name %></span>, <%= @to_city.name %></p>
       <hr>                                      
    </div>
   </div>
