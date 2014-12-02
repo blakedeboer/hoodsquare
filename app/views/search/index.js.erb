@@ -4,14 +4,11 @@ $('#featured').show();
 $('.nav').find('a[href$="icon-box"]').show();
 $('.nav').find('a[href$="featured"]').show();
 
-//this works only after a new search is submitted without page reload is clicked and then loaded
-  // $('.page-scroll input[type="submit"]').on('click', function(event) {
-  //   var $anchor = $(this);
-  //   $('html, body').stop().animate({
-  //     scrollTop: $('#icon-box').offset().top
-  //   }, 1500, 'easeInOutExpo');
-  //   event.preventDefault();
-  // });
+var $anchor = $('.page-scroll input[type="submit"]');
+$('html, body').stop().animate({
+  scrollTop: $('#icon-box').offset().top
+}, 1500, 'easeInOutExpo');
+
 
 $('#icon-box .container').empty();
 $('#icon-box .container').append("<%= j render 'search/topmatch' %>");
