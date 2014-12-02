@@ -27,7 +27,7 @@
                 <%= f.hidden_field :taggee_id, :value => match.id, :class => 'form-control' %>
               </div>
               <div class="form-group">
-                <%= f.button :type => 'submit',:class => 'btn btn-custom form-control btn-lg' do %>
+                <%= f.button :type => 'submit',:class => 'btn btn-custom form-control btn-lg', :'data-toggle' => 'modal', :'data-target' => '#featured-modal' do %>
                 Agree <i class='fa fa-thumbs-up'></i>
                 <% end %>
               </div>
