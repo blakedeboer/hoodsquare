@@ -18,7 +18,7 @@ sf.sfhoods
 # soma = Hood.find_by(:name => "SOMA")
 # soma.create_hood_cats
 
-Hood.all.get_img_urls
+# Hood.all.get_img_urls
 
 
 # soho = Hood.find_by(:name => "SoHo")
