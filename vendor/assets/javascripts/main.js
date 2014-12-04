@@ -97,9 +97,8 @@ $(document).ready(function(){
 // ***********************************								  
 			 
 $("body").backstretch([
-   "images/bg1.jpg",
-   "images/bg2.jpg",
-   "images/bg3.jpg"
+   'public/images/city_sf.jpg',
+   'public/images/city3.jpg'
 ], {duration: 5000, fade: 1000});
 							  
 

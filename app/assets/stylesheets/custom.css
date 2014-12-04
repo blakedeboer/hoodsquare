@@ -1,0 +1,76 @@
+.navbar-header a{
+  font-family: 'Bad Script';
+  font-weight: 900;
+  margin-top: 20px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-size: 28px;
+}
+
+input.btn.btn-submit,
+input.btn.btn-submit:focus {
+    outline: none;
+    border: 2px solid #fff;
+    height: 46px;
+    font-weight: bold;
+}
+
+#fullscreen-slider label{
+  font-size: 22px;
+}
+
+#fullscreen-slider .slider-caption i{
+  font-size: 50px;
+}
+
+#featured img{
+  height: 200px;
+  width: 300px;
+}
+
+.featured-box {
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.featured-title{
+  font-weight: 600;
+  line-height: 42px;
+  padding: 20px 0;
+}
+
+.featured-title h3{
+  font-size: 24px;
+  height: 52px;
+}
+
+#featured .modal-body img{
+  /*margin: 0 auto;*/
+}
+
+#featured .modal-body span{
+  font-weight: bold;
+}
+
+.featured-box .btn i{
+  font-size: 16px;
+}
+
+.featured-caption{
+  height: 84px;
+}
+
+.vote-form{
+  padding: 20px;
+}
+
+#slider select, #featured select, #featured .btn{
+  border: 2px solid #fff;
+}
+
+#team .team-box .last img{
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -o-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}

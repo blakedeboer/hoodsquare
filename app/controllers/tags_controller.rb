@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     @city = @hood.city
     Tag.create(tag_params)
 
-    redirect_to city_hood_path(@city, @hood)
+    render json: @hood
   end
 
   private

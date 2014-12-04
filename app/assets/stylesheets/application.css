@@ -11,8 +11,7 @@
  * file per style scope.
  *
  *= require_self
- *= require_tree .
- *= require bootstrap
+ *= require bootstrap.min
  *= require animate
  *= require font-awesome
  *= require magnific-popup
@@ -20,4 +19,5 @@
  *= require owl.theme
  *= require owl.transitions
  *= require style
+ *= require_tree .
  */

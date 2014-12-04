@@ -37,7 +37,6 @@ $(function(){
 
   // $.ajax('/cities/' + city_id + '/hoods', {
   //     type: 'get',
-  //     // context: this,
   //     dataType: 'script'
   //   })
   // });
