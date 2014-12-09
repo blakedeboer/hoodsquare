@@ -313,10 +313,10 @@ class Hood < ActiveRecord::Base
 
   def self.get_img_urls
     self.all.each do |hood|
-      # if hood.image_url == nil
+      if hood.img_url == nil
         photo = hood.get_flickr_img
         hood.update(:img_url => photo)
-      # end
+      end
     end
   end
     #given a hood_id, and the other city's id, returns a hash of the other city's hood names and their "distance" to the current city
