@@ -38,7 +38,7 @@ sf.hoods.each do |hood|
   hood.create_hood_cats
 end
 
-nyc.hoods.each do |hood|
+nyc.hoods.each do |hood|  
   distance_hash = Hood.relative_distances_by_id(hood.id, 2)
   comparison_array = distance_hash.map do |hood_id, hood_distance|
     hood_id

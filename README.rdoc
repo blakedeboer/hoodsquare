@@ -1,28 +1,16 @@
-== README
+==Hood2Hood - https://hood2hood.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+What is the Williamsburg of San Francisco? 
 
-Things you may want to cover:
+Rails app that finds similar neighborhoods in different cities based on Foursquare data and user input. 
 
-* Ruby version
+Leveraged the K-Means algorithm to measure the similarity of a neighborhood in one city to all the neighborhoods in another city and allows users to vote on the results which allows the app to "learn"
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Technologies used:
+* Foursquare API
+* Foursquare 2 gem
+* K-means gem
+* Flickr API 
+* AJAX
+* jQuery
+* Bootstrap
