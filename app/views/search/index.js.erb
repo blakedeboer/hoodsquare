@@ -38,12 +38,12 @@ $('#featured .btn-selection option:contains(' + match2 + ')').remove();
 $('#featured .btn-selection option:contains(' + match3 + ')').remove();
 
 
-$('#featured-list .agree-form').on('submit', function(e){
+$('#featured-list ').on('submit','.agree-form', function(e){
   e.preventDefault();
   cityId = $('.from-city').val()
    $.ajax('/cities/' + cityId + '/hoods', {
       type: 'get',
-      context: this,
+      context: this,  
       dataType: 'json'
     }).success(function(result){
       var chosenId = parseInt($(this).find('.form-group:eq(1)').children().attr('value'),10);

@@ -1,9 +1,16 @@
-.navbar-header a{
+.navbar-header a,
+.navbar-header a:hover,
+.navbar-header a:visited{
   font-family: 'Bad Script';
   font-weight: 900;
   margin-top: 20px;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
   font-size: 28px;
+  color: #FFFFFF;
+}
+
+.navbar-header a:hover{
+  text-shadow: 5px 5px 5px rgba(0,0,0,0.9);
 }
 
 input.btn.btn-submit,
